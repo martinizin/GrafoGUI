@@ -15,6 +15,9 @@ public class GrafoGUI {
     private JTextField txtv1;
     private JTextField txtv2;
     private JPanel pGrafo;
+    private JButton BFSButton;
+    private JTextField txtInicio;
+    private JButton DFSButton;
 
     public Grafo grafo=new Grafo(20);
     public GrafoPanel grafoPanel = new GrafoPanel(grafo);
@@ -64,6 +67,39 @@ public class GrafoGUI {
                 grafoPanel.setVisible(true);
                 grafoPanel.repaint();
                 grafoPanel.paintComponent(pGrafo.getGraphics());
+
+            }
+        });
+        BFSButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int vInicio=Integer.parseInt(txtInicio.getText());
+                    String resultado=grafo.bfs(vInicio);
+                    txtResultado.append("BFS desde el vértice"+vInicio+": "+resultado+" \n");
+                    JOptionPane.showMessageDialog(null, "Datos erróneos");
+
+
+                } catch (Exception ex) {
+
+                }
+
+            }
+        });
+        DFSButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    int vInicio=Integer.parseInt(txtInicio.getText());
+                    String resultado=grafo.busquedaenProfundidad(vInicio);
+                    txtResultado.append("BFS desde el vértice"+vInicio+": "+resultado+" \n");
+                    JOptionPane.showMessageDialog(null, "Datos erróneos");
+
+                } catch (Exception ex) {
+
+                }
+
 
             }
         });
